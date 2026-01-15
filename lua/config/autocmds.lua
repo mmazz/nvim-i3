@@ -31,27 +31,34 @@ autocmd("BufWritePre", {
     vim.fn.setpos(".", pos)
   end,
 })
-autocmd('LspAttach', {
-    group = mmazzGroup,
-    callback = function(ev)
-        local opts = { buffer = ev.buf }
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-        -- vim.keymap.set("n", 'gi', vim.lsp.buf.implementation, opts)
-        --
-        --
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.document_symbol() end, opts)
-        vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        --vim.keymap.set("n", "<leader>d", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
- --       vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-    end
+autocmd("LspAttach", {
+  group = mmazzGroup,
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+
+    -- Navigation
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+
+    -- Diagnostics
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
+    -- Hover & help
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+    -- Symbols
+    vim.keymap.set("n", "<leader>ls", vim.lsp.buf.document_symbols, opts)
+    vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbols, opts)
+
+    -- Actions
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  end,
 })
+
 autocmd("FileType", {
   group = mmazzGroup,
   pattern = { "tex", "markdown", "pandoc" },

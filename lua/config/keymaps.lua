@@ -98,3 +98,14 @@ vim.keymap.set("n", "<leader>lz", function()
 end, { desc = "Compile and open PDF with SyncTeX" })
 vim.keymap.set("n", "<leader>at", "<cmd>AerialToggle<CR>", { desc = "Toggle Aerial (outline)" })
 
+local function reload_nvim()
+  for name,_ in pairs(package.loaded) do
+    if name:match("^user") or name:match("^config") then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.env.MYVIMRC)
+  print("Neovim fully reloaded")
+end
+
+vim.keymap.set("n", "<leader>sr", reload_nvim, { desc = "Reload nvim (Lua)" })
