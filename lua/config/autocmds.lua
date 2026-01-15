@@ -1,7 +1,9 @@
 local augroup = vim.api.nvim_create_augroup
-local mmazzGroup = augroup('mmazz', {})
-
 local autocmd = vim.api.nvim_create_autocmd
+
+local mmazzGroup = augroup("mmazz", { clear = true })
+
+
 local yank_group = augroup('HighlightYank', {})
 
 -- Para recargar un modulo lua, por si lo estoy modificando o algo
@@ -31,6 +33,7 @@ autocmd("BufWritePre", {
     vim.fn.setpos(".", pos)
   end,
 })
+
 autocmd("LspAttach", {
   group = mmazzGroup,
   callback = function(ev)
@@ -45,12 +48,12 @@ autocmd("LspAttach", {
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
-    -- Hover & help
+    -- Hover
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-    -- Symbols
-    vim.keymap.set("n", "<leader>ls", vim.lsp.buf.document_symbols, opts)
-    vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbols, opts)
+    -- Symbols (⚠️ PLURAL)
+ --   vim.keymap.set("n", "<leader>ls", vim.lsp.buf.document_symbols, opts)
+  --  vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbols, opts)
 
     -- Actions
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
@@ -58,6 +61,7 @@ autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   end,
 })
+
 
 autocmd("FileType", {
   group = mmazzGroup,

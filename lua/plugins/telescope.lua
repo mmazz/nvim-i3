@@ -28,7 +28,8 @@ return {
 
     -- Keymaps (solo definen acciones, no ejecutan lógica)
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
+    vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find git files" })
+    --vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
 
     -- ⚠️ Recomendación: NO Telescope para implementación
