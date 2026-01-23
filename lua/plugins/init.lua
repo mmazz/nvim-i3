@@ -9,6 +9,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  require("plugins.mason"),
   require("plugins.telescope"),
   require("plugins.treesitter"),
   require("plugins.harpoon"),
@@ -17,4 +18,5 @@ require("lazy").setup({
   require("plugins.latex"),
   require("plugins.markdown"),
   require("plugins.colors"),
+  require("plugins.luasnip"),
 })
