@@ -34,11 +34,17 @@ autocmd("BufWritePre", {
   end,
 })
 
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.bo[args.buf].swapfile = false
+  end,
+})
 autocmd("LspAttach", {
   group = mmazzGroup,
   callback = function(ev)
     local opts = { buffer = ev.buf }
-
+    vim.bo[ev.buf].swapfile = false -- if not, every gd will create a swp file
     -- Navigation
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)

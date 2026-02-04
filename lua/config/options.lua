@@ -13,7 +13,7 @@ opt.wrap = false
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.updatetime = 250
-opt.timeoutlen = 400
+opt.timeoutlen = 1000
 
 opt.splitbelow = true
 opt.splitright = true
