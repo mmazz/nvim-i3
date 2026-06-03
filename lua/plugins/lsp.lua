@@ -65,14 +65,20 @@ return {
     vim.lsp.config.pyright = {
       capabilities = capabilities,
     }
-    -- clangd
+
     vim.lsp.config.clangd = {
-      cmd = { "clangd", "--background-index", "--clang-tidy" },
+      cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--pch-storage=memory",
+      },
       capabilities = vim.tbl_extend("force", capabilities, {
         offsetEncoding = { "utf-16" },
       }),
     }
-
     -- lua_ls (comentar si no está instalado)
     -- vim.lsp.config.lua_ls = {
     --   cmd = { "lua-language-server" },
