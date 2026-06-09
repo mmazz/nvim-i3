@@ -22,3 +22,5 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.g.loaded_vim_treesitter = 1
+
+vim.o.winborder = "rounded"

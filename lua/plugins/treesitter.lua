@@ -1,7 +1,9 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
+  lazy = false,
+  branch = 'main',
+ -- event = { "BufReadPost", "BufNewFile" },
   config = function()
     vim.treesitter.language.register('markdown', 'octo')
 
@@ -23,6 +25,12 @@ return {
         enable = true,
         disable = { "latex" },
       },
+    })
+    -- enable treesitter highlighting
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+      end,
     })
   end,
 }
