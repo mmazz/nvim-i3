@@ -61,13 +61,20 @@ return {
  --           ColorMyPencils()
         end
     },
+--    {
+--        'arcticicestudio/nord-vim',
+--        config = function()
+--            ColorMyPencils("nord")
+--        end
+--
+--
+--    },
     {
-        'arcticicestudio/nord-vim',
+        'fcancelinha/nordern.nvim',
         config = function()
-            ColorMyPencils("nord")
+            ColorMyPencils("nordern")
         end
+    }
 
-
-    },
 }
 
