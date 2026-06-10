@@ -9,6 +9,10 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#b0b7c0' })
     vim.api.nvim_set_hl(0, 'LineNr', { fg='#647c90' })
     vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#b0b7c0' })
+
+    vim.api.nvim_set_hl(0, "LspDiagnosticsUnderlineError", {
+        underline = true, fg = "#bf616a"})
+
 end
 
 -- color
@@ -61,14 +65,6 @@ return {
  --           ColorMyPencils()
         end
     },
---    {
---        'arcticicestudio/nord-vim',
---        config = function()
---            ColorMyPencils("nord")
---        end
---
---
---    },
     {
         'fcancelinha/nordern.nvim',
         config = function()
